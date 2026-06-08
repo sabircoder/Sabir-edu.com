@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Payment Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .card-header h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .card-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 30px 20px;
+        }
+
+        .course-info {
+            margin-bottom: 25px;
+        }
+
+        .course-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .course-features li {
+            padding: 8px 0;
+            color: #666;
+            font-size: 14px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .course-features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .price-section {
+            margin: 25px 0;
+            text-align: center;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .current-price {
+            font-size: 36px;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .price-note {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .payment-button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .payment-button:active {
+            transform: scale(0.98);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cards-container">
+        <!-- Data Science Beginner Card -->
+        <div class="payment-card">
+            <div class="card-header">
+                <h2>Data Science 101</h2>
+                <p>Beginner Level</p>
+            </div>
+            <div class="card-body">
+                <div class="course-info">
+                    <h3>What You'll Learn:</h3>
+                    <ul class="course-features">
+                        <li>Python Fundamentals</li>
+                        <li>Data Manipulation with Pandas</li>
+                        <li>Data Visualization</li>
+                        <li>Basic Statistics</li>
+                        <li>Lifetime Access</li>
+                    </ul>
+                </div>
+
+                <div class="price-section">
+                    <div class="original-price">$199</div>
+                    <div class="current-price">$99</div>
+                    <div class="price-note">One-time payment</div>
+                    <span class="badge">50% OFF</span>
+                </div>
+
+                <button class="payment-button" onclick="handlePayment('Data Science 101', 99)">
+                    Enroll Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Data Science Intermediate Card -->
+        <div class="payment-card">
+            <div class="card-header">
+                <h2>Data Science Pro</h2>
+                <p>Intermediate Level</p>
+            </div>
+            <div class="card-body">
+                <div class="course-info">
+                    <h3>What You'll Learn:</h3>
+                    <ul class="course-features">
+                        <li>Machine Learning Basics</li>
+                        <li>Supervised Learning</li>
+                        <li>Model Evaluation</li>
+                        <li>Real-world Projects</li>
+                        <li>1-on-1 Mentoring</li>
+                    </ul>
+                </div>
+
+                <div class="price-section">
+                    <div class="original-price">$399</div>
+                    <div class="current-price">$249</div>
+                    <div class="price-note">One-time payment</div>
+                    <span class="badge">37% OFF</span>
+                </div>
+
+                <button class="payment-button" onclick="handlePayment('Data Science Pro', 249)">
+                    Enroll Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Data Science Advanced Card -->
+        <div class="payment-card">
+            <div class="card-header">
+                <h2>Data Science Master</h2>
+                <p>Advanced Level</p>
+            </div>
+            <div class="card-body">
+                <div class="course-info">
+                    <h3>What You'll Learn:</h3>
+                    <ul class="course-features">
+                        <li>Deep Learning & Neural Networks</li>
+                        <li>Advanced ML Algorithms</li>
+                        <li>Big Data Processing</li>
+                        <li>Production Deployment</li>
+                        <li>Career Guidance</li>
+                    </ul>
+                </div>
+
+                <div class="price-section">
+                    <div class="original-price">$799</div>
+                    <div class="current-price">$499</div>
+                    <div class="price-note">One-time payment</div>
+                    <span class="badge">37% OFF</span>
+                </div>
+
+                <button class="payment-button" onclick="handlePayment('Data Science Master', 499)">
+                    Enroll Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handlePayment(courseName, price) {
+            // Integration with payment gateway (Stripe, PayPal, etc.)
+            alert(`Processing payment for ${courseName}\nPrice: $${price}\n\nRedirecting to payment gateway...`);
+            
+            // Example: Redirect to Stripe checkout
+            // window.location.href = `https://your-payment-gateway.com/checkout?course=${courseName}&price=${price}`;
+            
+            // For demonstration, you can replace this with actual payment integration
+            console.log(`Payment initiated for: ${courseName}, Amount: $${price}`);
+        }
+    </script>
+</body>
+</html>
